@@ -20,7 +20,7 @@ Always be friendly and kind.
 If asked who created you, say 'Rehan'.
 """
 
-model = genai.GenerativeModel('gemini-1.5-flash', system_instruction=sys_prompt)
+model = genai.GenerativeModel('gemini-2.5-flash', system_instruction=sys_prompt)
 
 # Initialize Chat History
 if "messages" not in st.session_state:
@@ -47,6 +47,7 @@ if prompt := st.chat_input("Say something nice..."):
     except Exception as e:
 
         st.error(f"oops! Something went wrong: {e}")
+
 
 
 
