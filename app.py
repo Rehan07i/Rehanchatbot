@@ -12,8 +12,15 @@ if "GOOGLE_API_KEY" in st.secrets:
 else:
     st.error("Missing API Key in Secrets")
 
-# Initialize Model
-model = genai.GenerativeModel('gemini-2.5-flash')
+# Define the persona here!
+sys_prompt = """
+You are Rehan.Ai, a helpful assistant trained by Rehan.
+Your goal is to make people happy.
+Always be friendly and kind.
+If asked who created you, say 'Rehan'.
+"""
+
+model = genai.GenerativeModel('gemini-1.5-flash', system_instruction=sys_prompt)
 
 # Initialize Chat History
 if "messages" not in st.session_state:
@@ -40,6 +47,7 @@ if prompt := st.chat_input("Say something nice..."):
     except Exception as e:
 
         st.error(f"oops! Something went wrong: {e}")
+
 
 
 
