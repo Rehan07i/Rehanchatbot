@@ -13,7 +13,7 @@ else:
     st.error("Missing API Key in Secrets")
 
 # Initialize Model
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-pro')
 
 # Initialize Chat History
 if "messages" not in st.session_state:
@@ -38,4 +38,5 @@ if prompt := st.chat_input("Say something nice..."):
             st.markdown(response.text)
         st.session_state.messages.append({"role": "assistant", "content": response.text})
     except Exception as e:
+
         st.error(f"oops! Something went wrong: {e}")
